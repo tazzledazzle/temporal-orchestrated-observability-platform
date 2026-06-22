@@ -8,9 +8,18 @@ A **reference platform** that runs sample **AI workflows** on **Temporal**, inst
 
 **An operator can start an AI workflow, watch it succeed or fail in Temporal, and within Grafana trace the same run across metrics, traces, and logs using shared workflow identifiers.**
 
+## Current State (v1.0 — shipped 2026-05-20)
+
+- **Worker:** Kotlin/JVM 21 Gradle monorepo (~1,450 LOC) — `:workflows`, `:worker`, `:starter`
+- **Workflows:** PingWorkflow, RagQa, AgentTools, BatchEval with WireMock LLM stub
+- **Stack:** Docker Compose — Temporal, Grafana, Loki, Tempo, Prometheus, Jaeger, OTel Collector, Promtail
+- **Telemetry:** OTel traces/metrics/logs correlated by `workflow_id`; Prometheus `:9464/metrics`
+- **Operations:** `docs/OPERATIONS.md` runbooks, `deploy/prometheus/alerts.yml`, smoke scripts
+- **Evidence:** `.planning/phases/*/VERIFICATION.md` · archived requirements in `.planning/milestones/v1.0-REQUIREMENTS.md`
+
 ## Requirements
 
-### Validated (v1 complete — 2026-05-20)
+### Validated (v1.0)
 
 - ✓ **Foundation (Phase 1)** — Gradle modules, Compose LGTM+Temporal stack, smoke script, CI
 - ✓ **Temporal (Phase 2)** — PingWorkflow, worker, starter CLI
@@ -20,14 +29,32 @@ A **reference platform** that runs sample **AI workflows** on **Temporal**, inst
 - ✓ **LGTM (Phase 6)** — Loki, Tempo, Grafana dashboards, log↔trace correlation
 - ✓ **Operations (Phase 7)** — Runbooks, Prometheus alerts, manual validation
 
-See `.planning/phases/*/VERIFICATION.md` for evidence.
+### Active (next milestone — not yet defined)
 
-### Out of Scope (v2)
+Run `/gsd-new-milestone` to define v1.1+ requirements. v2 candidates from prior scoping:
 
-- **Kubernetes deployment** — Helm/Kustomize stretch
-- **Production Temporal Cloud** — Self-hosted Compose for v1
-- **PagerDuty integration** — Example alerts only
-- **Custom ML training** — Stubs / external APIs
+- **K8S-01** — Helm chart or Kustomize for Temporal + observability stack
+- **K8S-02** — Temporal mTLS between worker and server
+- **AI-01** — Real OpenAI/Anthropic integration behind feature flag
+- **AI-02** — LangGraph activity embedding inside Temporal activities
+
+### Out of Scope
+
+| Feature | Reason |
+|---------|--------|
+| Multi-region Temporal | Portfolio scope |
+| Custom embedding training | Not observability focus |
+| SaaS auth/billing | Demo platform |
+| PagerDuty integration | Example alerts only (v1) |
+| Production Temporal Cloud | Self-hosted Compose for v1 |
+
+## Next Milestone Goals
+
+Prioritize from v2 candidates above or add new scope via `/gsd-new-milestone`:
+
+1. **Portfolio polish** — Grafana screenshot, README demo flow
+2. **Kubernetes stretch** — Helm/Kustomize deployment path
+3. **Real LLM integration** — feature-flagged provider behind existing stub interface
 
 ## Context
 
@@ -44,13 +71,13 @@ Design: `docs/ARCHITECTURE.md` · ADRs: `docs/adr/`
 
 ## Key Decisions
 
-| Decision | Rationale | ADR |
-|----------|-----------|-----|
-| Temporal for orchestration | Durable AI steps, UI, retries | ADR-001 |
-| Kotlin + OTel workers | Matches diagram; LGTM-native telemetry | ADR-002 |
-| Jaeger dev → Tempo LGTM | Fast debug + Grafana correlation | ADR-003 |
-| workflow_id on traces/logs, not metric labels | Avoid cardinality explosion | ADR-004 |
-| Compose-first platform | Reproducible local demo | ADR-005 |
+| Decision | Rationale | ADR | Outcome |
+|----------|-----------|-----|---------|
+| Temporal for orchestration | Durable AI steps, UI, retries | ADR-001 | ✓ Good — all workflows durable with visible history |
+| Kotlin + OTel workers | Matches diagram; LGTM-native telemetry | ADR-002 | ✓ Good — full trace/metric/log correlation |
+| Jaeger dev → Tempo LGTM | Fast debug + Grafana correlation | ADR-003 | ✓ Good — dual-export supports both paths |
+| workflow_id on traces/logs, not metric labels | Avoid cardinality explosion | ADR-004 | ✓ Good — bounded Prometheus labels |
+| Compose-first platform | Reproducible local demo | ADR-005 | ✓ Good — single-command stack bring-up |
 
 ---
-*v1 completed: 2026-05-20*
+*Last updated: 2026-06-22 after v1.0 milestone*
