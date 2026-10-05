@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "temporal_orchestrated_observability_platform",
+  "project_id": "22eb2661-75f0-4cd1-914c-bffb9ba039c3"
+}
