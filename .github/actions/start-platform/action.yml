@@ -1,0 +1,51 @@
+name: Start Observability Platform
+description: Starts Docker Compose stack, waits for all services, starts Temporal worker.
+
+runs:
+  using: composite
+  steps:
+    - name: Start Docker Compose stack
+      shell: bash
+      run: docker compose -f deploy/docker-compose.yml up -d
+
+    - name: Wait for services to be healthy
+      shell: bash
+      run: |
+        check_url() {
+          local name=$1 url=$2
+          for i in $(seq 1 30); do
+            curl -fsS "$url" >/dev/null 2>&1 && echo "READY $name" && return 0
+            sleep 3
+          done
+          echo "TIMEOUT $name ($url)" >&2
+          return 1
+        }
+        check_url "Temporal UI"    "http://localhost:8080/"
+        check_url "Grafana"        "http://localhost:3000/api/health"
+        check_url "Prometheus"     "http://localhost:9090/-/healthy"
+        check_url "Loki"           "http://localhost:3100/ready"
+        check_url "Tempo"          "http://localhost:3200/ready"
+        check_url "OTel Collector" "http://localhost:13133/"
+
+    - name: Start Temporal worker
+      shell: bash
+      run: |
+        export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317
+        nohup ./gradlew :worker:run --no-daemon > /tmp/worker-ci.log 2>&1 &
+        for i in $(seq 1 60); do
+          grep -q "Worker started" /tmp/worker-ci.log 2>/dev/null && echo "Worker ready" && exit 0
+          sleep 1
+        done
+        echo "Worker failed to start" >&2
+        cat /tmp/worker-ci.log >&2
+        exit 1
+
+    - name: "Post-test: verify no services crashed"
+      if: always()
+      shell: bash
+      run: |
+        for svc in temporal temporal-ui prometheus loki tempo otel-collector grafana; do
+          if ! docker compose -f deploy/docker-compose.yml ps "$svc" 2>/dev/null | grep -q "running"; then
+            echo "::warning title=Service Degraded::$svc is not in running state after test"
+          fi
+        done
