@@ -1,0 +1,170 @@
+- generic [ref=f3e4]:
+  - link "Skip to main content" [ref=f3e5] [cursor=pointer]:
+    - /url: "#pageContent"
+  - banner [ref=f3e7]:
+    - generic [ref=f3e8]:
+      - link [ref=f3e10] [cursor=pointer]:
+        - /url: /
+        - img "Grafana" [ref=f3e11]
+      - generic [ref=f3e14]:
+        - button "Search or jump to..." [ref=f3e18] [cursor=pointer]
+        - generic [ref=f3e19]: ⌘+k
+      - generic [ref=f3e23]:
+        - button "New" [ref=f3e24] [cursor=pointer]
+        - button "Help" [ref=f3e30] [cursor=pointer]
+        - button "News" [ref=f3e33] [cursor=pointer]
+        - button "Profile" [ref=f3e36] [cursor=pointer]:
+          - img "User avatar" [ref=f3e37]
+    - generic [ref=f3e38]:
+      - button "Open menu" [ref=f3e40] [cursor=pointer]
+      - navigation "Breadcrumbs" [ref=f3e43]:
+        - list [ref=f3e44]:
+          - listitem [ref=f3e45]:
+            - generic "Home" [ref=f3e46]
+      - button "Toggle top search bar" [ref=f3e49] [cursor=pointer]
+  - main [ref=f3e55]:
+    - generic [ref=f3e63]:
+      - generic [ref=f3e69]:
+        - heading "Welcome to Grafana" [level=1] [ref=f3e70]
+        - generic [ref=f3e71]:
+          - heading "Need help?" [level=3] [ref=f3e72]
+          - generic [ref=f3e73]:
+            - link "Documentation" [ref=f3e74] [cursor=pointer]:
+              - /url: https://grafana.com/docs/grafana/latest?utm_source=grafana_gettingstarted
+            - link "Tutorials" [ref=f3e75] [cursor=pointer]:
+              - /url: https://grafana.com/tutorials?utm_source=grafana_gettingstarted
+            - link "Community" [ref=f3e76] [cursor=pointer]:
+              - /url: https://community.grafana.com?utm_source=grafana_gettingstarted
+            - link "Public Slack" [ref=f3e77] [cursor=pointer]:
+              - /url: http://slack.grafana.com?utm_source=grafana_gettingstarted
+      - generic [ref=f3e83]:
+        - button "Remove this panel" [ref=f3e84] [cursor=pointer]
+        - generic [ref=f3e87]:
+          - generic [ref=f3e88]:
+            - heading "Basic" [level=2] [ref=f3e89]
+            - paragraph [ref=f3e90]: The steps below will guide you to quickly finish setting up your Grafana installation.
+          - generic [ref=f3e91]:
+            - link "tutorial Data source and dashboards Grafana fundamentals Set up and understand Grafana if you have no prior experience. This tutorial guides you through the entire process and covers the “Data source” and “Dashboards” steps to the right." [ref=f3e92] [cursor=pointer]:
+              - /url: https://grafana.com/tutorials/grafana-fundamentals?utm_source=grafana_gettingstarted
+              - generic [ref=f3e93]:
+                - generic [ref=f3e94]: tutorial
+                - generic [ref=f3e95]: Data source and dashboards
+                - heading "Grafana fundamentals" [level=4] [ref=f3e96]
+                - generic [ref=f3e97]: Set up and understand Grafana if you have no prior experience. This tutorial guides you through the entire process and covers the “Data source” and “Dashboards” steps to the right.
+            - generic [ref=f3e98]:
+              - link "complete Add your first data source" [ref=f3e100] [cursor=pointer]:
+                - /url: datasources/new?utm_source=grafana_gettingstarted
+                - generic [ref=f3e101]: complete
+                - heading "Add your first data source" [level=4] [ref=f3e102]
+              - link "Learn how in the docs" [ref=f3e103] [cursor=pointer]:
+                - /url: https://grafana.com/docs/grafana/latest/features/datasources/add-a-data-source?utm_source=grafana_gettingstarted
+            - generic [ref=f3e106]:
+              - link "complete Create your first dashboard" [ref=f3e108] [cursor=pointer]:
+                - /url: dashboard/new?utm_source=grafana_gettingstarted
+                - generic [ref=f3e109]: complete
+                - heading "Create your first dashboard" [level=4] [ref=f3e110]
+              - link "Learn how in the docs" [ref=f3e111] [cursor=pointer]:
+                - /url: https://grafana.com/docs/grafana/latest/guides/getting_started/#create-a-dashboard?utm_source=grafana_gettingstarted
+        - button "To advanced tutorials" [ref=f3e114] [cursor=pointer]
+      - region [ref=f3e120]:
+        - heading "Dashboards" [level=2] [ref=f3e123]
+        - generic [ref=f3e126]:
+          - generic [ref=f3e127]:
+            - heading "Starred dashboards" [level=6] [ref=f3e128]
+            - list
+          - generic [ref=f3e129]:
+            - heading "Recently viewed dashboards" [level=6] [ref=f3e130]
+            - list
+      - region [ref=f3e134]:
+        - heading "Latest from the blog" [level=2] [ref=f3e137]
+        - generic [ref=f3e140]:
+          - article [ref=f3e141]:
+            - link [aria-hidden] [ref=f3e142] [cursor=pointer]:
+              - /url: https://grafana.com/blog/tempo-3-1-release-all-the-latest-features/
+            - generic [ref=f3e143]:
+              - time [ref=f3e144]: Sep 30
+              - link [ref=f3e145] [cursor=pointer]:
+                - /url: https://grafana.com/blog/tempo-3-1-release-all-the-latest-features/
+                - 'heading "Tempo 3.1 release: new features for Kafka, TraceQL metrics updates, trace redaction, and more" [level=3] [ref=f3e146]'
+              - generic [ref=f3e147]: Building on the major release of Tempo 3.0, Tempo 3.1 is here, delivering community-contributed Kafka client improvements, query-based trace redaction, sampling-aware TraceQL metrics, and more.
+          - article [ref=f3e148]:
+            - link [aria-hidden] [ref=f3e149] [cursor=pointer]:
+              - /url: https://grafana.com/blog/what-if-your-agent-s-hallucinations-had-a-budget-how-to-start-using-slos-for-agent-behavior/
+            - generic [ref=f3e150]:
+              - time [ref=f3e151]: Sep 24
+              - link [ref=f3e152] [cursor=pointer]:
+                - /url: https://grafana.com/blog/what-if-your-agent-s-hallucinations-had-a-budget-how-to-start-using-slos-for-agent-behavior/
+                - heading "What if your agent's hallucinations had a budget? How to start using SLOs for agent behavior" [level=3] [ref=f3e153]
+              - generic [ref=f3e154]: "At Grafana Labs, observability is what we do. So as we started building AI agents, we naturally reached for the same instincts we bring to every system: measure it, set targets, and make reliability something you can reason about instead of hope for."
+          - article [ref=f3e155]:
+            - link [aria-hidden] [ref=f3e156] [cursor=pointer]:
+              - /url: https://grafana.com/blog/grafana-alerting-scale-alert-routing-without-scaling-complexity-using-multiple-notification-policies/
+            - generic [ref=f3e157]:
+              - time [ref=f3e158]: Sep 21
+              - link [ref=f3e159] [cursor=pointer]:
+                - /url: https://grafana.com/blog/grafana-alerting-scale-alert-routing-without-scaling-complexity-using-multiple-notification-policies/
+                - 'heading "Grafana Alerting: Scale alert routing without scaling complexity using multiple notification policies" [level=3] [ref=f3e160]'
+              - generic [ref=f3e161]: Alert routing often starts simple. A team creates a few contact points, adds some label matchers, and builds a notification policy tree that sends each alert to the right destination.
+          - article [ref=f3e162]:
+            - link [aria-hidden] [ref=f3e163] [cursor=pointer]:
+              - /url: https://grafana.com/blog/digital-experience-monitoring-with-grafana-cloud-session-replay-synthetic-checks-and-faster-investigations/
+            - generic [ref=f3e164]:
+              - time [ref=f3e165]: Sep 14
+              - link [ref=f3e166] [cursor=pointer]:
+                - /url: https://grafana.com/blog/digital-experience-monitoring-with-grafana-cloud-session-replay-synthetic-checks-and-faster-investigations/
+                - 'heading "Digital Experience Monitoring with Grafana Cloud: Session Replay, synthetic checks, and faster investigations" [level=3] [ref=f3e167]'
+              - generic [ref=f3e168]: "When something breaks in production, the questions that matter most are also the toughest to answer from metrics alone: who was affected, what did they actually see, and is this worth waking someone up for? Answering those questions requires a fuller picture of the issue and its impact on your users."
+          - article [ref=f3e169]:
+            - link [aria-hidden] [ref=f3e170] [cursor=pointer]:
+              - /url: https://grafana.com/blog/synthetic-monitoring-labels-update/
+            - generic [ref=f3e171]:
+              - time [ref=f3e172]: Sep 10
+              - link [ref=f3e173] [cursor=pointer]:
+                - /url: https://grafana.com/blog/synthetic-monitoring-labels-update/
+                - 'heading "Custom labels in Grafana Cloud Synthetic Monitoring: New updates for consistency and ease-of-use" [level=3] [ref=f3e174]'
+              - generic [ref=f3e175]: "Labels are a powerful way to organize telemetry and define policies across Grafana Cloud, helping to streamline alerting, attribution, access control, and more. But traditionally, custom labels in Synthetic Monitoring have worked a little differently: they only lived on a single sm_check_info metric, and Grafana Cloud prefixed each one with label_."
+          - article [ref=f3e176]:
+            - link [aria-hidden] [ref=f3e177] [cursor=pointer]:
+              - /url: https://grafana.com/blog/how-to-monitor-cypress-tests-with-grafana-cloud/
+            - generic [ref=f3e178]:
+              - time [ref=f3e179]: Sep 09
+              - link [ref=f3e180] [cursor=pointer]:
+                - /url: https://grafana.com/blog/how-to-monitor-cypress-tests-with-grafana-cloud/
+                - heading "How to monitor Cypress tests with Grafana Cloud" [level=3] [ref=f3e181]
+              - generic [ref=f3e182]: If your Cypress suite has tests that fail more often or run slower, you know it can be hard to figure out the pattern from a single job. It could be one spec that slowed down, or a single test that fails, or maybe the entire suite is trending slower. The root cause could be a bug in the app, or a flaky test, or something else. Your terminal output and CI log will tell you what happened on a single run, but that doesn't help you spot any larger trends—especially since you lose that data as soon as the job finishes.
+          - article [ref=f3e183]:
+            - link [aria-hidden] [ref=f3e184] [cursor=pointer]:
+              - /url: https://grafana.com/blog/how-to-measure-and-improve-instrumentation-quality-for-better-full-stack-observability/
+            - generic [ref=f3e185]:
+              - time [ref=f3e186]: Aug 27
+              - link [ref=f3e187] [cursor=pointer]:
+                - /url: https://grafana.com/blog/how-to-measure-and-improve-instrumentation-quality-for-better-full-stack-observability/
+                - heading "How to measure and improve instrumentation quality for better full-stack observability" [level=3] [ref=f3e188]
+              - generic [ref=f3e189]: Modern engineering teams instrument everything, with metrics, logs, traces, and profiles flowing from hundreds of services at once. But full-stack observability isn’t really about collecting more telemetry; it's about having a single, unified picture of how your services connect to every layer beneath them, including their dependencies, the pods and nodes they run on, and the logs, traces, and profiles that explain their behavior.
+          - article [ref=f3e190]:
+            - link [aria-hidden] [ref=f3e191] [cursor=pointer]:
+              - /url: https://grafana.com/blog/the-grafana-ai-sdk-for-go-a-shared-foundation-for-building-ai-applications/
+            - generic [ref=f3e192]:
+              - time [ref=f3e193]: Aug 25
+              - link [ref=f3e194] [cursor=pointer]:
+                - /url: https://grafana.com/blog/the-grafana-ai-sdk-for-go-a-shared-foundation-for-building-ai-applications/
+                - 'heading "The Grafana AI SDK for Go: a shared foundation for building AI applications" [level=3] [ref=f3e195]'
+              - generic [ref=f3e196]: "Starting an experiment with an LLM has never been easier. Keeping a growing collection of those experiments consistent is another matter.Earlier this year, as more teams began exploring AI features here at Grafana Labs, we repeatedly encountered the same pattern: a new experiment would start, move quickly, and build its own client for whichever model provider it needed. The next experiment would do the same, with a slightly different abstraction for streaming, tools, errors, or provider configuration."
+          - article [ref=f3e197]:
+            - link [aria-hidden] [ref=f3e198] [cursor=pointer]:
+              - /url: https://grafana.com/blog/how-to-scale-alloy-as-a-central-telemetry-gateway-capacity-planning-load-testing-and-production-lessons/
+            - generic [ref=f3e199]:
+              - time [ref=f3e200]: Aug 21
+              - link [ref=f3e201] [cursor=pointer]:
+                - /url: https://grafana.com/blog/how-to-scale-alloy-as-a-central-telemetry-gateway-capacity-planning-load-testing-and-production-lessons/
+                - 'heading "How to scale Alloy as a central telemetry gateway: capacity planning, load testing, and production lessons" [level=3] [ref=f3e202]'
+              - generic [ref=f3e203]: Running Alloy as a single-instance sidecar is simple. Running it as a centralized gateway that absorbs the full telemetry stream of an enterprise platform—tens of millions of active series, terabytes of logs per day, and tens of thousands of trace spans per second—is a different challenge altogether. To get it right, you need deliberate capacity planning, honest load testing, and a monitoring setup that doesn't rely on the very thing you're testing.
+          - article [ref=f3e204]:
+            - link [aria-hidden] [ref=f3e205] [cursor=pointer]:
+              - /url: https://grafana.com/blog/grafana-13-2-release-all-the-latest-features/
+            - generic [ref=f3e206]:
+              - time [ref=f3e207]: Aug 20
+              - link [ref=f3e208] [cursor=pointer]:
+                - /url: https://grafana.com/blog/grafana-13-2-release-all-the-latest-features/
+                - 'heading "Grafana 13.2 release: easier ways to query and explore your data" [level=3] [ref=f3e209]'
+              - generic [ref=f3e210]: Grafana 13.2 is here, bringing more improvements to help you and your team explore your data and get to insights faster.In this post, we’ll highlight the latest updates to saved queries, a feature that lets teams share, discover, and reuse queries to get to trusted answers faster and help new teammates get up to speed. We’ll also explore how the new View panel sidebar makes exploring busy panels a breeze.

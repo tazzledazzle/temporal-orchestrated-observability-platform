@@ -52,9 +52,9 @@ class LlmClientTracingTest {
 
         parentSpan.makeCurrent().use {
             val client =
-                LlmClient(
+                StubLlmClient(
                     baseUrl = server.url("/").toString().trimEnd('/'),
-                    callFactory = LlmClient.instrumentedCallFactory(otel),
+                    callFactory = StubLlmClient.instrumentedCallFactory(otel),
                 )
             val result = client.complete("What is OTel?", listOf("chunk-a"))
             assertFalse(result.text.isBlank())

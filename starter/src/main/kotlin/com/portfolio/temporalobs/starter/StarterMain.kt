@@ -2,12 +2,14 @@ package com.portfolio.temporalobs.starter
 
 import com.portfolio.temporalobs.workflows.AgentToolsWorkflow
 import com.portfolio.temporalobs.workflows.BatchEvalWorkflow
+import com.portfolio.temporalobs.workflows.LangGraphWorkflow
 import com.portfolio.temporalobs.workflows.PingWorkflow
 import com.portfolio.temporalobs.workflows.RagQaWorkflow
 import com.portfolio.temporalobs.workflows.TaskQueues
 import com.portfolio.temporalobs.workflows.TemporalConnection
 import com.portfolio.temporalobs.workflows.model.AgentToolsResult
 import com.portfolio.temporalobs.workflows.model.BatchEvalResult
+import com.portfolio.temporalobs.workflows.model.LangGraphResult
 import com.portfolio.temporalobs.workflows.model.RagQaResult
 import io.temporal.client.WorkflowOptions
 import java.util.UUID
@@ -19,6 +21,7 @@ fun main(args: Array<String>) {
         "rag" -> runRag(args.drop(1))
         "agent" -> runAgent(args.drop(1))
         "batch" -> runBatch(args.drop(1))
+        "langgraph" -> runLangGraph(args.drop(1))
         null, "" -> {
             printUsage()
             exitProcess(1)
@@ -98,11 +101,24 @@ private fun printResult(
     lines.forEach { println(it) }
 }
 
+private fun runLangGraph(args: List<String>) {
+    val prompt = args.joinToString(" ").ifBlank { "Explain how distributed tracing works" }
+    val workflowId = "langgraph-${UUID.randomUUID()}"
+    val workflow = workflowStub(LangGraphWorkflow::class.java, workflowId)
+    val result: LangGraphResult = workflow.run(prompt)
+    printResult(
+        workflowId,
+        "answer=${result.answer}",
+        "iterations=${result.iterations}",
+    )
+}
+
 private fun printUsage() {
     println("Usage: starter <command> [args]")
     println("Commands:")
-    println("  ping                 Run PingWorkflow")
-    println("  rag [question]       Run RagQaWorkflow")
-    println("  agent [goal]         Run AgentToolsWorkflow")
-    println("  batch [dataset] [n]  Run BatchEvalWorkflow (default n=5)")
+    println("  ping                    Run PingWorkflow")
+    println("  rag [question]          Run RagQaWorkflow")
+    println("  agent [goal]            Run AgentToolsWorkflow")
+    println("  batch [dataset] [n]     Run BatchEvalWorkflow (default n=5)")
+    println("  langgraph [prompt]      Run LangGraphWorkflow (2-iteration agent loop)")
 }

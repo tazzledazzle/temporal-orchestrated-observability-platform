@@ -1,37 +1,37 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: Reference Platform
-current_phase: —
-status: completed
-last_updated: "2026-06-22T23:34:08.057Z"
-last_activity: 2026-06-22 — Milestone v1.0 completed and archived
+milestone: v1.1
+milestone_name: Real LLM Integration
+current_phase: v1.1 planning complete — Phase 8 (Real LLM wiring) next
+status: planning
+last_updated: "2026-10-05T00:00:00.000Z"
+last_activity: 2026-10-05 — v1.1 milestone scope defined (AI-01 + AI-02, 3 phases)
 progress:
-  total_phases: 7
-  completed_phases: 7
-  total_plans: 8
-  completed_plans: 8
-  percent: 100
+  total_phases: 3
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
 
 **Project:** Temporal-Orchestrated Observability Platform  
-**Updated:** 2026-06-22  
-**Current phase:** — (v1.0 complete)  
-**Status:** v1.0 milestone archived
+**Updated:** 2026-10-05  
+**Current phase:** v1.1 planning — Phase 8 (Real LLM wiring) is next  
+**Status:** v1.1 milestone scoped; ready to execute
 
 ## Project Reference
 
-See: `.planning/PROJECT.md` (updated 2026-06-22)
+See: `.planning/PROJECT.md` (updated 2026-10-05)
 
 **Core value:** An operator can start an AI workflow, watch it in Temporal, and in Grafana trace the same run across metrics, traces, and logs.
 
-**Current focus:** Planning next milestone
+**Current focus:** v1.1 — Real LLM Integration (AI-01 + AI-02)
 
 ## Active work
 
-- None
+- v1.1 requirements and roadmap defined; Phase 8 (Real LLM wiring) ready to start
 
 ## Blockers
 
@@ -39,10 +39,13 @@ See: `.planning/PROJECT.md` (updated 2026-06-22)
 
 ## Next actions
 
-1. `/gsd-new-milestone` — define v1.1+ scope, requirements, and roadmap
-2. Portfolio: run `./scripts/lgtm-sample-load.sh`, capture Grafana screenshot for README
+1. Start Phase 8: implement `LlmClient` interface + OpenAI/Anthropic providers + feature flag wiring
+2. Phase 9: implement `LangGraphAgentActivity` with child spans
+3. Phase 10: `llm-smoke.sh`, `v1.1-VERIFICATION.md`, dashboard evidence
 
 ## Phase completion log
+
+### v1.0 Reference Platform (archived)
 
 | Phase | Completed | Verification |
 |-------|-----------|--------------|
@@ -54,17 +57,26 @@ See: `.planning/PROJECT.md` (updated 2026-06-22)
 | 6 | 2026-05-20 | `06-VERIFICATION.md` |
 | 7 | 2026-05-20 | `07-VERIFICATION.md` |
 
-## v1.0 requirements
+### v1.1 Real LLM Integration
 
-All 22 v1 requirements **Done** — see `.planning/milestones/v1.0-REQUIREMENTS.md` traceability table.
+| Phase | Completed | Verification |
+|-------|-----------|--------------|
+| 8 (Real LLM wiring) | — | — |
+| 9 (LangGraph activity) | — | — |
+| 10 (End-to-end verification) | — | `v1.1-VERIFICATION.md` |
+
+## Requirements
+
+- v1.0: All 22 requirements **Done** — see `.planning/milestones/v1.0-REQUIREMENTS.md`
+- v1.1: 8 requirements **Planned** — see `.planning/milestones/v1.1-REQUIREMENTS.md`
 
 ## Current Position
 
-Phase: Milestone v1.0 complete  
+Phase: v1.1 planning complete; Phase 8 (Real LLM wiring) is next  
 Plan: —  
-Status: Awaiting next milestone  
-Last activity: 2026-06-22 — Milestone v1.0 completed and archived
+Status: Planning  
+Last activity: 2026-10-05 — v1.1 milestone scope defined
 
 ## Operator Next Steps
 
-- Start the next milestone with `/gsd-new-milestone`
+- Execute Phase 8: `LlmClient` interface + provider implementations + feature flag

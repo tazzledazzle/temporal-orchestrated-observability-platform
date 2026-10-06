@@ -1,0 +1,49 @@
+- main [ref=e7]:
+  - status "Logged in" [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e20]: Logged in
+      - button "Close alert" [ref=e22] [cursor=pointer]
+  - generic [ref=e25]:
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - img "Grafana" [ref=e29]
+        - heading "Update your password" [level=1] [ref=e31]
+      - generic [ref=e34]:
+        - status "Continuing to use the default password exposes you to security risks." [ref=e35]
+        - generic [ref=e42]:
+          - generic [ref=e43]: New password
+          - generic [ref=e49]:
+            - textbox "New password" [active] [ref=e50]
+            - switch "Show password" [ref=e52] [cursor=pointer]
+        - generic [ref=e55]:
+          - generic [ref=e56]: Confirm new password
+          - generic [ref=e62]:
+            - textbox "Confirm new password" [ref=e63]
+            - switch "Show password" [ref=e65] [cursor=pointer]
+        - generic [ref=e68]:
+          - button "Submit" [ref=e69] [cursor=pointer]
+          - button "Skip" [ref=e71] [cursor=pointer]
+    - list [ref=e75]:
+      - listitem [ref=e76]:
+        - link "Documentation" [ref=e79] [cursor=pointer]:
+          - /url: https://grafana.com/docs/grafana/latest/?utm_source=grafana_footer
+        - text: "|"
+      - listitem [ref=e80]:
+        - link "Support" [ref=e83] [cursor=pointer]:
+          - /url: https://grafana.com/products/enterprise/?utm_source=grafana_footer
+        - text: "|"
+      - listitem [ref=e84]:
+        - link "Community" [ref=e87] [cursor=pointer]:
+          - /url: https://community.grafana.com/?utm_source=grafana_footer
+        - text: "|"
+      - listitem [ref=e88]:
+        - link "Open Source" [ref=e89] [cursor=pointer]:
+          - /url: https://grafana.com/oss/grafana?utm_source=grafana_footer
+        - text: "|"
+      - listitem [ref=e90]:
+        - link "Grafana v11.3.1 (64b556c137)" [ref=e91] [cursor=pointer]:
+          - /url: https://github.com/grafana/grafana/blob/main/CHANGELOG.md
+        - text: "|"
+      - listitem [ref=e92]:
+        - link "New version available!" [ref=e95] [cursor=pointer]:
+          - /url: https://grafana.com/grafana/download?utm_source=grafana_footer

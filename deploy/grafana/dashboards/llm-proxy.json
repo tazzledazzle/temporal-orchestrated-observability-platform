@@ -1,17 +1,30 @@
 {
-  "annotations": { "list": [] },
+  "annotations": {
+    "list": []
+  },
   "editable": false,
   "graphTooltip": 1,
   "id": null,
   "links": [],
   "panels": [
     {
-      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "fieldConfig": {
-        "defaults": { "unit": "s", "decimals": 3 },
+        "defaults": {
+          "unit": "s",
+          "decimals": 3
+        },
         "overrides": []
       },
-      "gridPos": { "h": 10, "w": 12, "x": 0, "y": 0 },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
       "id": 1,
       "targets": [
         {
@@ -29,9 +42,22 @@
       "type": "timeseries"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "prometheus" },
-      "fieldConfig": { "defaults": { "unit": "ops" }, "overrides": [] },
-      "gridPos": { "h": 10, "w": 12, "x": 12, "y": 0 },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ops"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
       "id": 2,
       "targets": [
         {
@@ -44,11 +70,26 @@
       "type": "timeseries"
     },
     {
-      "datasource": { "type": "prometheus", "uid": "prometheus" },
-      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
-      "gridPos": { "h": 6, "w": 24, "x": 0, "y": 10 },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
       "id": 3,
-      "options": { "colorMode": "value" },
+      "options": {
+        "colorMode": "value"
+      },
       "targets": [
         {
           "expr": "sum(increase(llm_request_duration_seconds_count{status=\"ok\"}[1h]))",
@@ -63,12 +104,51 @@
       ],
       "title": "LLM stub outcomes (1h)",
       "type": "stat"
+    },
+    {
+      "id": 4,
+      "title": "LangGraph iteration rate",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "targets": [
+        {
+          "expr": "sum(rate(activity_duration_seconds_count{activity_type=\"LangGraphAgentActivity\"}[5m])) by (status)",
+          "legendFormat": "langgraph {{status}}",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
     }
   ],
   "refresh": "30s",
   "schemaVersion": 39,
-  "tags": ["observability", "llm"],
-  "time": { "from": "now-1h", "to": "now" },
+  "tags": [
+    "observability",
+    "llm"
+  ],
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
   "title": "LLM Proxy",
   "uid": "llm-proxy",
   "version": 1

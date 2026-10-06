@@ -1,0 +1,71 @@
+- generic [ref=f6e4]:
+  - link "Skip to main content" [ref=f6e5] [cursor=pointer]:
+    - /url: "#pageContent"
+  - banner [ref=f6e7]:
+    - generic [ref=f6e8]:
+      - link [ref=f6e10] [cursor=pointer]:
+        - /url: /
+        - img "Grafana" [ref=f6e11]
+      - generic [ref=f6e14]:
+        - button "Search or jump to..." [ref=f6e18] [cursor=pointer]
+        - generic [ref=f6e19]: ⌘+k
+      - generic [ref=f6e23]:
+        - button "New" [ref=f6e24] [cursor=pointer]
+        - button "Help" [ref=f6e30] [cursor=pointer]
+        - button "News" [ref=f6e33] [cursor=pointer]
+        - button "Profile" [ref=f6e36] [cursor=pointer]:
+          - img "User avatar" [ref=f6e37]
+    - generic [ref=f6e38]:
+      - button "Open menu" [ref=f6e40] [cursor=pointer]
+      - navigation "Breadcrumbs" [ref=f6e43]:
+        - list [ref=f6e44]:
+          - listitem [ref=f6e45]:
+            - link "Home" [ref=f6e46] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f6e50]:
+            - link "Dashboards" [ref=f6e66] [cursor=pointer]:
+              - /url: /dashboards
+          - listitem [ref=f6e70]:
+            - link "Observability" [ref=f6e71] [cursor=pointer]:
+              - /url: /dashboards/f/ag0csz8cjiy2of/observability
+          - listitem [ref=f6e75]:
+            - generic "Workflow Overview" [ref=f6e76]
+      - generic [ref=f6e52]:
+        - generic [ref=f6e78]:
+          - button "Mark as favorite" [ref=f6e80] [cursor=pointer]
+          - button "Share" [ref=f6e86] [cursor=pointer]
+          - button "Make editable" [ref=f6e89] [cursor=pointer]
+        - button "Toggle top search bar" [ref=f6e53] [cursor=pointer]
+  - main [ref=f6e59]:
+    - generic [ref=f6e93]:
+      - generic [ref=f6e96]:
+        - generic [ref=f6e97]:
+          - 'button "Time range selected: Last 1 hour" [ref=f6e98] [cursor=pointer]':
+            - generic [ref=f6e101]: Last 1 hour
+          - button "Zoom out time range" [ref=f6e106] [cursor=pointer]
+        - generic [ref=f6e109]:
+          - button "Refresh" [ref=f6e110] [cursor=pointer]
+          - button "Choose refresh time interval with current interval 30 seconds selected" [ref=f6e115] [cursor=pointer]:
+            - generic [ref=f6e116]: 30s
+      - generic [ref=f6e123]:
+        - region [ref=f6e127]:
+          - heading "Workflow completion rate" [level=2] [ref=f6e130]
+          - list [ref=f6e148]:
+            - listitem [ref=f6e149]:
+              - generic [ref=f6e151]:
+                - generic [ref=f6e152] [cursor=pointer]
+                - button "BatchEvalWorkflow ok" [ref=f6e153] [cursor=pointer]
+            - listitem [ref=f6e154]:
+              - generic [ref=f6e156]:
+                - generic [ref=f6e157] [cursor=pointer]
+                - button "PingWorkflow ok" [ref=f6e158] [cursor=pointer]
+            - listitem [ref=f6e159]:
+              - generic [ref=f6e161]:
+                - generic [ref=f6e162] [cursor=pointer]
+                - button "RagQaWorkflow ok" [ref=f6e163] [cursor=pointer]
+        - region [ref=f6e167]:
+          - heading "Workflow error ratio" [level=2] [ref=f6e170]
+          - generic [ref=f6e171]: No data
+        - region [ref=f6e181]:
+          - heading "Workflow completions (last 1h)" [level=2] [ref=f6e184]
+          - generic "completions (1h)" [ref=f6e187]: "1.20"

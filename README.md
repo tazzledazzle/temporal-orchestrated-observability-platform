@@ -9,7 +9,25 @@
 ![Temporal SDK](https://img.shields.io/badge/Temporal-1.25.2-blue)
 ![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-1.43.0-orange)
 
-<!-- Demo: add screenshot or GIF of Grafana Workflow Overview after ./scripts/lgtm-sample-load.sh -->
+## Screenshots
+
+> **To regenerate this screenshot:** start the Docker Compose stack, run `./scripts/lgtm-sample-load.sh`, then open Grafana at [http://localhost:3000/d/workflow-overview](http://localhost:3000/d/workflow-overview) (`admin`/`admin`).
+
+![Grafana Workflow Overview](docs/screenshots/grafana-workflow-overview.png)
+
+The **Workflow Overview** dashboard (`deploy/grafana/dashboards/workflow-overview.json`) shows:
+
+- **Workflow throughput** — workflows started and completed per minute (Prometheus counter)
+- **Activity RED metrics** — requests, error rate, and p50/p95/p99 duration for each activity type
+- **End-to-end trace timeline** — correlated spans from Starter → Temporal → Worker → LLM stub (via Tempo)
+- **Structured log stream** — `service_name="ai-temporal-worker"` log lines with `workflow_id` and `activity_type` fields (via Loki)
+
+Additional dashboards provisioned in `deploy/grafana/dashboards/`:
+| Dashboard | Path | Purpose |
+|-----------|------|---------|
+| Workflow Overview | `/d/workflow-overview` | Throughput, activity RED, traces, logs |
+| Activity Latency | `/d/activity-latency` | Per-activity p50/p95/p99 heatmaps |
+| LLM Proxy | `/d/llm-proxy` | WireMock LLM stub request rates and latencies |
 
 ## Overview
 

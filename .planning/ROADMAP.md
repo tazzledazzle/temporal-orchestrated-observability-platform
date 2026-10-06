@@ -3,6 +3,7 @@
 ## Milestones
 
 - ✅ **v1.0 Reference Platform** — Phases 1–7 (shipped 2026-05-20)
+- 🔜 **v1.1 Real LLM Integration** — Phases 8–10 (planned 2026-Q4)
 
 ## Overview
 
@@ -39,9 +40,15 @@ Full phase details: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 | 6. LGTM | v1.0 | 1/1 | Complete | 2026-05-20 |
 | 7. Operations | v1.0 | 1/1 | Complete | 2026-05-20 |
 
-## Next Milestone
+## v1.1 Real LLM Integration — Phases
 
-Use `/gsd-new-milestone` to define v1.1+ scope. See `.planning/PROJECT.md` for v2 candidates.
+| # | Phase | Milestone | Goal | Status |
+|---|-------|-----------|------|--------|
+| 8 | Real LLM wiring | v1.1 | `LlmClient` interface + OpenAI/Anthropic providers + OTel attrs | Planned |
+| 9 | LangGraph activity | v1.1 | `LangGraphAgentActivity` with plan→tool→observe loop + child spans | Planned |
+| 10 | End-to-end verification | v1.1 | `llm-smoke.sh`, VERIFICATION.md, dashboard evidence | Planned |
+
+Full phase details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 
 ---
-*Last updated: 2026-06-22 after v1.0 milestone archive*
+*Last updated: 2026-10-05 — v1.1 milestone scope defined*

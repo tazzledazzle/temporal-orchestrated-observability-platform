@@ -29,14 +29,23 @@ A **reference platform** that runs sample **AI workflows** on **Temporal**, inst
 - ✓ **LGTM (Phase 6)** — Loki, Tempo, Grafana dashboards, log↔trace correlation
 - ✓ **Operations (Phase 7)** — Runbooks, Prometheus alerts, manual validation
 
-### Active (next milestone — not yet defined)
+### Active (v1.1 — Real LLM Integration)
 
-Run `/gsd-new-milestone` to define v1.1+ requirements. v2 candidates from prior scoping:
+**Requirements:** [.planning/milestones/v1.1-REQUIREMENTS.md](milestones/v1.1-REQUIREMENTS.md)  
+**Roadmap:** [.planning/milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 
-- **K8S-01** — Helm chart or Kustomize for Temporal + observability stack
-- **K8S-02** — Temporal mTLS between worker and server
-- **AI-01** — Real OpenAI/Anthropic integration behind feature flag
-- **AI-02** — LangGraph activity embedding inside Temporal activities
+| ID | Requirement | Phase | Status |
+|----|-------------|-------|--------|
+| LLM-01 | `LlmClient` interface; stub/openai/anthropic impls; `LLM_PROVIDER` env flag | 8 | Planned |
+| LLM-02 | OpenAI provider: `api.openai.com/v1/chat/completions` via existing OkHttp | 8 | Planned |
+| LLM-03 | Anthropic provider: `api.anthropic.com/v1/messages` via existing OkHttp | 8 | Planned |
+| LLM-04 | OTel span attrs on real calls: `llm.provider`, `llm.model`, `llm.input_tokens`, `llm.output_tokens` | 8 | Planned |
+| LG-01 | `LangGraphAgentActivity` runs plan→tool→observe loop (≥2 iterations) as Temporal activity | 9 | Planned |
+| LG-02 | Each loop iteration emits child span `langgraph.iteration` with `iteration`, `tool_called`, `observation_length` | 9 | Planned |
+| LG-03 | Starter CLI `--workflow langgraph` triggers the new workflow | 9 | Planned |
+| LLM-05 | `./scripts/llm-smoke.sh` verifies real-provider round-trip; `smoke.sh` still exits 0 stub-only | 10 | Planned |
+
+**Deferred to v1.2 (Production Deployment):** K8S-01 (Helm/Kustomize), K8S-02 (Temporal mTLS)
 
 ### Out of Scope
 
@@ -48,13 +57,11 @@ Run `/gsd-new-milestone` to define v1.1+ requirements. v2 candidates from prior 
 | PagerDuty integration | Example alerts only (v1) |
 | Production Temporal Cloud | Self-hosted Compose for v1 |
 
-## Next Milestone Goals
+## Next Milestone Goals (v1.1)
 
-Prioritize from v2 candidates above or add new scope via `/gsd-new-milestone`:
-
-1. **Portfolio polish** — Grafana screenshot, README demo flow
-2. **Kubernetes stretch** — Helm/Kustomize deployment path
-3. **Real LLM integration** — feature-flagged provider behind existing stub interface
+1. **Phase 8** — Wire `LlmClient` interface; add OpenAI + Anthropic providers behind `LLM_PROVIDER` flag; enrich OTel span attributes
+2. **Phase 9** — Implement `LangGraphAgentActivity`; update or add workflow; verify child spans in Tempo
+3. **Phase 10** — `llm-smoke.sh`, `v1.1-VERIFICATION.md`, dashboard evidence, operations runbook update
 
 ## Context
 
@@ -80,4 +87,4 @@ Design: `docs/ARCHITECTURE.md` · ADRs: `docs/adr/`
 | Compose-first platform | Reproducible local demo | ADR-005 | ✓ Good — single-command stack bring-up |
 
 ---
-*Last updated: 2026-06-22 after v1.0 milestone*
+*Last updated: 2026-10-05 — v1.1 milestone scope defined*

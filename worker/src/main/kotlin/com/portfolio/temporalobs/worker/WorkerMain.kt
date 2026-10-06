@@ -1,10 +1,14 @@
 package com.portfolio.temporalobs.worker
 
+import com.portfolio.temporalobs.worker.clients.AnthropicLlmClient
 import com.portfolio.temporalobs.worker.clients.LlmClient
+import com.portfolio.temporalobs.worker.clients.OpenAiLlmClient
+import com.portfolio.temporalobs.worker.clients.StubLlmClient
 import com.portfolio.temporalobs.worker.telemetry.OpenTelemetryConfig
 import com.portfolio.temporalobs.worker.telemetry.TemporalTracingInterceptor
 import com.portfolio.temporalobs.workflows.AgentToolsWorkflowImpl
 import com.portfolio.temporalobs.workflows.BatchEvalWorkflowImpl
+import com.portfolio.temporalobs.workflows.LangGraphWorkflowImpl
 import com.portfolio.temporalobs.workflows.PingWorkflowImpl
 import com.portfolio.temporalobs.workflows.RagQaWorkflowImpl
 import com.portfolio.temporalobs.workflows.TaskQueues
@@ -16,7 +20,11 @@ import java.util.concurrent.TimeUnit
 
 fun main() {
     val otel = OpenTelemetryConfig.init(serviceVersion = "0.1.0-SNAPSHOT")
-    val llmClient = LlmClient.create(otel)
+    val llmClient: LlmClient = when (System.getenv("LLM_PROVIDER")?.lowercase() ?: "stub") {
+        "openai" -> OpenAiLlmClient.create(otel)
+        "anthropic" -> AnthropicLlmClient.create(otel)
+        else -> StubLlmClient.create(otel)
+    }
 
     val host = TemporalConnection.temporalHost()
     val service = TemporalConnection.serviceStubs()
@@ -33,12 +41,14 @@ fun main() {
         RagQaWorkflowImpl::class.java,
         AgentToolsWorkflowImpl::class.java,
         BatchEvalWorkflowImpl::class.java,
+        LangGraphWorkflowImpl::class.java,
     )
     worker.registerActivitiesImplementations(
         PingActivitiesImpl(),
         RagActivitiesImpl(llmClient = llmClient),
         AgentActivitiesImpl(),
         BatchActivitiesImpl(),
+        LangGraphAgentActivityImpl(llmClient = llmClient, openTelemetry = otel),
     )
 
     val shutdownLatch = CountDownLatch(1)

@@ -38,3 +38,9 @@ data class LlmCompletion(
     val text: String,
     val citation: String,
 )
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class LangGraphResult(
+    val answer: String,
+    val iterations: Int,
+) : Serializable

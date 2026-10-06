@@ -1,0 +1,29 @@
+- generic [ref=f6e4]:
+  - link "Skip to main content" [ref=f6e5] [cursor=pointer]:
+    - /url: "#pageContent"
+  - banner [ref=f6e7]:
+    - generic [ref=f6e8]:
+      - link [ref=f6e10] [cursor=pointer]:
+        - /url: /
+        - img "Grafana" [ref=f6e11]
+      - generic [ref=f6e14]:
+        - button "Search or jump to..." [ref=f6e18] [cursor=pointer]
+        - generic [ref=f6e19]: ⌘+k
+      - generic [ref=f6e23]:
+        - button "New" [ref=f6e24] [cursor=pointer]
+        - button "Help" [ref=f6e30] [cursor=pointer]
+        - button "News" [ref=f6e33] [cursor=pointer]
+        - button "Profile" [ref=f6e36] [cursor=pointer]:
+          - img "User avatar" [ref=f6e37]
+    - generic [ref=f6e38]:
+      - button "Open menu" [ref=f6e40] [cursor=pointer]
+      - navigation "Breadcrumbs" [ref=f6e43]:
+        - list [ref=f6e44]:
+          - listitem [ref=f6e45]:
+            - link "Home" [ref=f6e46] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f6e50]:
+            - generic "Dashboards" [ref=f6e51]
+      - button "Toggle top search bar" [ref=f6e53] [cursor=pointer]
+  - main [ref=f6e59]:
+    - generic [ref=f6e60]: Loading ...
