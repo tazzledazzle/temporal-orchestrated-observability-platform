@@ -6,13 +6,10 @@ import io.gatling.http.Predef._
 import io.temporal.client.{WorkflowClient, WorkflowOptions}
 import io.temporal.serviceclient.{WorkflowServiceStubs, WorkflowServiceStubsOptions}
 
-import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
 import java.time.Duration
 import java.util.UUID
 import java.util.concurrent.ConcurrentLinkedQueue
 import scala.concurrent.duration._
-import scala.jdk.CollectionConverters._
 
 class ObservabilityPipelineSimulation extends Simulation {
 
@@ -68,18 +65,10 @@ class ObservabilityPipelineSimulation extends Simulation {
         .check(jsonPath("$.traces[0].traceID").exists)
     )
     // Loki: at least one structured log line with matching workflow_id
-    .exec { session =>
-      val wfId = session("verifyId").as[String]
-      val query = URLEncoder.encode(
-        s"""{service_name="ai-temporal-worker"} | json | workflow_id=`$wfId`""",
-        StandardCharsets.UTF_8
-      )
-      session.set("lokiQuery", query)
-    }
     .exec(
       http("Loki: log line with matching workflow_id")
         .get(s"$lokiBase/loki/api/v1/query")
-        .queryParam("query", "${lokiQuery}")
+        .queryParam("query", """{service_name="ai-temporal-worker"} | json | workflow_id=`${verifyId}`""")
         .check(status.is(200))
         .check(jsonPath("$.data.result[0]").exists)
     )

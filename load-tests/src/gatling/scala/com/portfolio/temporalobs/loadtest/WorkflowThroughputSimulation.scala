@@ -21,8 +21,8 @@ class WorkflowThroughputSimulation extends Simulation {
     case _        => (5,  2.minutes)   // baseline
   }
 
-  // error threshold: 1 % for baseline, 2 % for target/stress
-  private val errorThresholdPct: Double = if (tier == "target") 2.0 else 1.0
+  // error threshold: 1 % for baseline, 2 % for target and stress
+  private val errorThresholdPct: Double = if (tier == "baseline") 1.0 else 2.0
 
   private val serviceStubs = WorkflowServiceStubs.newConnectedServiceStubs(
     WorkflowServiceStubsOptions.newBuilder()
