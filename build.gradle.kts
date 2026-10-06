@@ -12,6 +12,9 @@ allprojects {
 }
 
 subprojects {
+    // load-tests uses the Gatling (Scala) plugin and must not inherit the Kotlin JVM plugin
+    if (name == "load-tests") return@subprojects
+
     apply(plugin = "org.jetbrains.kotlin.jvm")
 
     extensions.configure<org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension> {
